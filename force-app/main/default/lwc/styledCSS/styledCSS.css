@@ -3,7 +3,7 @@
     background-color: var(--lwc-color-background-alt); /* Replace hardcoded color with a background color token */
     color: darkblue;   /*var(--lwc-color-text-error); */ /* Replace hardcoded color with a text error color token */
     font-family: var(--sds-font-family-heading);
-    font-size: 1.5rem; /*var(--sds-fontSize-heading-medium); */ 
+    font-size:  var(--sds-fontSize-heading-medium); 
     font-weight: bold;
     line-height: var(--sds-lineHeight-heading);
 }
