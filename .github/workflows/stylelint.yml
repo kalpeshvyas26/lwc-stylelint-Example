@@ -21,10 +21,16 @@ jobs:
       - name: Install dependencies
         run: npm ci # Or yarn install --frozen-lockfile if you use Yarn
 
+      - name: Navigate to repository root
+        run: cd ${{ github.workspace }}
+
       - name: Run Stylelint (Verbose Output and Report File)
         run: npx stylelint "**/*.css" "**/*.scss" "**/*.less" --formatter verbose --report-needless-disables --max-warnings 0 || true > stylelint_report.txt
         # Adjust the file patterns to match your CSS/style files
         continue-on-error: true # Allow the step to complete even if Stylelint fails
+
+      - name: List workspace contents after Stylelint
+        run: ls -al ${{ github.workspace }}
 
       - name: Upload Stylelint report for PR review
         uses: actions/upload-artifact@v4
@@ -34,4 +40,4 @@ jobs:
 
       - name: Fail the workflow if Stylelint found errors
         if: steps.stylelint.outcome == 'failure'
-        run: echo "Stylelint found errors. Please check the 'stylelint-report' artifact." && exit 1
+        run: echo "Stylelint found errors. Please check the workflow logs for stylelint_report.txt location." && exit 1
