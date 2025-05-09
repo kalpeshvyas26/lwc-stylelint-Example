@@ -2,7 +2,7 @@ name: Stylelint Check
 
 on:
   pull_request:
-    branches: [main, develop, release/*] # Adjust these to your main development branches
+    branches: [main, develop, release/*]
 
 jobs:
   stylelint:
@@ -16,28 +16,30 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*' # Use the latest LTS version of Node.js
+          node-version: 'lts/*'
 
       - name: Install dependencies
-        run: npm ci # Or yarn install --frozen-lockfile if you use Yarn
+        run: npm ci
 
-      - name: Navigate to repository root
-        run: cd ${{ github.workspace }}
+      - name: Run Stylelint
+        id: stylelint
+        run: |
+          npx stylelint "**/*.css" "**/*.scss" "**/*.less" \
+            --formatter verbose \
+            --report-needless-disables \
+            --max-warnings 0 \
+            > stylelint_report.txt
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
 
-      - name: Run Stylelint (Verbose Output and Report File)
-        run: npx stylelint "**/*.css" "**/*.scss" "**/*.less" --formatter verbose --report-needless-disables --max-warnings 0 || true > stylelint_report.txt
-        # Adjust the file patterns to match your CSS/style files
-        continue-on-error: true # Allow the step to complete even if Stylelint fails
-
-      - name: List workspace contents after Stylelint
-        run: ls -al ${{ github.workspace }}
-
-      - name: Upload Stylelint report for PR review
+      - name: Upload Stylelint report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: stylelint-report
           path: stylelint_report.txt
 
-      - name: Fail the workflow if Stylelint found errors
-        if: steps.stylelint.outcome == 'failure'
-        run: echo "Stylelint found errors. Please check the workflow logs for stylelint_report.txt location." && exit 1
+      - name: Fail if Stylelint found errors
+        if: steps.stylelint.outputs.exit_code != '0'
+        run: |
+          echo "Stylelint found errors. Please check the stylelint_report.txt artifact for details."
+          exit 1
