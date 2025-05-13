@@ -1,6 +1,6 @@
 .card-content {
     padding: var(--lwc-spacing-small); /* Replace hardcoded padding with a spacing token */
-    background-color: darkblue;/* var(--lwc-color-background-alt); Replace hardcoded color with a background color token */
+    background-color:  var(--lwc-color-background-alt); /* Replace hardcoded color with a background color token */
     color:     var(--lw -text-error);  /* Replace hardcoded color with a text error color token */
     font-family: var(--sds-font-family-heading);
     font-size: var(--sds-fontSize-heading-medium);
