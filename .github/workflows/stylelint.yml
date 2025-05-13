@@ -18,30 +18,26 @@ jobs:
         with:
           node-version: 'lts/*' # Use the latest LTS version of Node.js
 
-      - name: Install Stylelint CLI
-        run: npm install --save-dev stylelint stylelint-config-standard # Or yarn add -D ...
+      - name: Install dependencies
+        run: npm install # Changed from npm ci
 
-      - name: Run Stylelint (Verbose Output and Report File)
-        run: npx stylelint "**/*.css" "**/*.scss" "**/*.less" --formatter verbose --report-needless-disables --max-warnings 0 || true > stylelint_report.txt
+      - name: Run Stylelint
+        id: stylelint
+        run: |
+          npx stylelint "**/*.css" "**/*.scss" "**/*.less" --formatter verbose --report-needless-disables --max-warnings 0
+          if [ $? -ne 0 ]; then
+            echo "Stylelint found errors."
+            exit 1
+          fi
         # Adjust the file patterns to match your CSS/style files
-        continue-on-error: true # Allow the step to complete even if Stylelint fails
 
-      - name: Upload Stylelint report for PR review
+      - name: Upload Stylelint report for PR review (if errors exist)
+        if: steps.stylelint.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: stylelint-report
-          path: stylelint_report.txt
-
-      - name: Navigate to repository root
-        run: cd ${{ github.workspace }}
-
-      - name: List workspace contents after Stylelint
-        run: ls -al ${{ github.workspace }}
+          path: stylelint_report.txt # This file is not being created in the current setup
 
       - name: Fail the workflow if Stylelint found errors
         if: steps.stylelint.outcome == 'failure'
-        run: echo "Stylelint found errors. Please check the workflow logs for stylelint_report.txt location." && exit 1
-
-      - name: Install dependencies
-        run: npm ci # Or yarn install --frozen-lockfile if you use Yarn
-
+        run: echo "Stylelint found errors. Please check the workflow logs for details." && exit 1
