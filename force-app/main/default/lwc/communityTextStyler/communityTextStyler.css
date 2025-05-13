@@ -1,0 +1,10 @@
+/* Hardcoded red text */
+.hardcoded-red-text {
+    color: red;
+  }
+  
+  /* Style hook for theme-aware color */
+  .stylehook-colored-text {
+    color: var(--my-custom-color, #0070d2); /* fallback to blue */
+  }
+  
