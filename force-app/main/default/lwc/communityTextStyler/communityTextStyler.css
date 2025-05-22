@@ -1,6 +1,6 @@
 /* Hardcoded red text */
 .hardcoded-red-text {
-    color: red;
+    color: var(--my-custom-color);
   }
   
   /* Style hook for theme-aware color */
