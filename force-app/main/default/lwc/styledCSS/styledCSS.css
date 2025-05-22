@@ -1,3 +1,7 @@
+:host {
+    --slds-c-button-c-color-background: purple;
+}
+
 .card-content {
     padding: var(--lwc-spacing-small); /* Replace hardcoded padding with a spacing token */
     background-color:  var(--lwc-color-background-alt); /* Replace hardcoded color with a background color token */
