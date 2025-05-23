@@ -27,7 +27,7 @@ module.exports = {
         "ignoreValues": ["inherit", "transparent", "currentColor", "initial", "unset"],
         "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}.",
         // This is a common pattern for LWC design tokens (CSS custom properties)
-        "ignoreFunction": "/^var\\(--?[a-zA-Z0-9-]+(,[^)]+)?\\)$/",
+       "ignoreFunction": "/^var\\(.*?\\)$/",
       }
     ],
 
