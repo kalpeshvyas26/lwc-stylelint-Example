@@ -20,6 +20,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install # Changed from npm ci
+     
+      - name: Clean npm cache
+        run: npm cache clean --force
+
+      - name: Force fresh install of dependencies
+        run: rm -rf node_modules package-lock.json && npm install
+      
+      - name: Upgrade stylelint-declaration-strict-value
+        run: npm install stylelint-declaration-strict-value@latest --save-dev
 
       - name: Upgrade stylelint-declaration-strict-value
         run: npm install stylelint-declaration-strict-value@latest --save-dev
