@@ -31,8 +31,6 @@ module.exports = {
         "ignoreCustomProperties": true 
       }
     ],
-
-    "color-named": false,
     "color-no-hex": null,
     "custom-property-pattern": null
   }
