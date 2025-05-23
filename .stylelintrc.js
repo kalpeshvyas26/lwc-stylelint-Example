@@ -36,33 +36,4 @@ module.exports = {
   }
 
 };
-  /*{
-    extends: 'stylelint-config-standard-scss',
-    rules: {
-      // Add or override rules as needed
-      'indentation': 2, // Enforce 2-space indentation
-      'declaration-block-trailing-semicolon' : 'always', // Require trailing semicolons
-      'no-descending-specificity': null, // Relax rule about descending specificity (use with caution)
-      'selector-list-comma-newline-after': 'always-multi-line',
-      'property-no-vendor-prefix': true, // Disallow vendor prefixes
-      // Add more rules based on your team's style guide
-      'color-no-invalid-hex' : true,
-      'custom-property-no-missing-var-function' : true
-    },
-  };
-
- {
-    "extends": [
-      "stylelint-config-standard"
-    ],
-    "plugins": [],
-    "rules": {
-      "value-no-vendor-prefix": true,
-      "property-no-vendor-prefix": true,
-      "color-no-hex": true,
-      "unit-no-unknown": [true, { "ignoreUnits": ["px"] }],
-      "shorthand-property-no-redundant-values": true,
-      "declaration-block-no-shorthand-property-overrides": true
-    }
-  }
-*/
+ 
