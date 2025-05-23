@@ -27,14 +27,14 @@ module.exports = {
         "ignoreValues": ["inherit", "transparent", "currentColor", "initial", "unset"],
          // This regex aims to be more permissive with the content inside var() after the first comma.
         "ignoreFunction": "/^var\\(--[a-zA-Z0-9-]+(?:,\\s*[^)]+)?\\)$/",
-        "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}."
+        "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}.",
+        "ignoreCustomProperties": true 
       }
     ],
 
     "color-named": "never",
     "color-no-hex": true,
-    "custom-property-pattern": null,
-    "scale-unlimited/declaration-strict-value/ignoreCustomProperties": true
+    "custom-property-pattern": null
   }
 
 };
