@@ -27,13 +27,17 @@ module.exports = {
         "ignoreFunction": "/^var\\(--?[a-zA-Z0-9-]+\\)$/", // More generic var() matching
         // A more flexible regex for `var()` that also handles the fallback:
         // "ignoreFunction": "/^var\\([^,)]+(,[^)]+)?\\)$/",
+
         "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}."
       }
     ],
     "color-named": "never",
     "color-no-hex": true,
     "custom-property-pattern": null,
+
     // This allows you to define custom properties with direct values without strict checking
+
+
     "scale-unlimited/declaration-strict-value/ignoreCustomProperties": true
   }
 };
