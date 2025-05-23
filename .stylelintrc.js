@@ -21,12 +21,17 @@ module.exports = {
       ],
       {
         "ignoreValues": ["inherit", "transparent", "currentColor", "initial", "unset"],
+        // If you are using standard Salesforce Design System tokens like var(--sds-c-...),
+        // keep this if you want to allow their usage for the listed properties.
+        "ignoreFunction": "/^var\\(--sds-c-[a-zA-Z0-9-]+\\)$/",
         "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}."
       }
     ],
     "color-named": "never",
     "color-no-hex": true,
     "custom-property-pattern": null,
+    // Add this to ignore the strict value rule for custom property declarations
+    "scale-unlimited/declaration-strict-value/ignoreCustomProperties": true
   }
 };
   /*{
