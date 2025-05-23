@@ -32,7 +32,7 @@ module.exports = {
       }
     ],
 
-    "color-named": "null",
+    "color-named": false,
     "color-no-hex": null,
     "custom-property-pattern": null
   }
