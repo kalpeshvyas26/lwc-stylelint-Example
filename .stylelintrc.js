@@ -1,38 +1,63 @@
 module.exports = {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-recommended-scss"
-  ],
-  "plugins": [
-    "stylelint-declaration-strict-value"
-  ],
-  "rules": {
-    "declaration-no-important": true,
-    "scale-unlimited/declaration-strict-value": [
-      [
-        "color",
-        "background-color",
-        "border-color",
-        "margin",
-        "padding",
-        "font-size",
-        "line-height",
-        "font-weight"
-      ],
-      {
-        "ignoreValues": ["inherit", "transparent", "currentColor", "initial", "unset"],
-        // If you are using standard Salesforce Design System tokens like var(--sds-c-...),
-        // keep this if you want to allow their usage for the listed properties.
-        "ignoreFunction": "/^var\\(--sds-c-[a-zA-Z0-9-]+\\)$/",
-        "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}."
-      }
-    ],
-    "color-named": "never",
-    "color-no-hex": true,
-    "custom-property-pattern": null,
-    // Add this to ignore the strict value rule for custom property declarations
-    "scale-unlimited/declaration-strict-value/ignoreCustomProperties": true
-  }
+
+  "extends": [
+
+    "stylelint-config-standard",
+
+    "stylelint-config-recommended-scss"
+
+  ],
+
+  "plugins": [
+
+    "stylelint-declaration-strict-value"
+
+  ],
+
+  "rules": {
+
+    "declaration-no-important": true,
+
+    "scale-unlimited/declaration-strict-value": [
+
+      [
+
+        "color",
+
+        "background-color",
+
+        "border-color",
+
+        "margin",
+
+        "padding",
+
+        "font-size",
+
+        "line-height",
+
+        "font-weight"
+
+      ],
+
+      {
+
+        "ignoreValues": ["inherit", "transparent", "currentColor", "initial", "unset"],
+
+        "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}."
+
+      }
+
+    ],
+
+    "color-named": "never",
+
+    "color-no-hex": true,
+
+    "custom-property-pattern": null,
+
+  }
+
 };
   /*{
     extends: 'stylelint-config-standard-scss',
