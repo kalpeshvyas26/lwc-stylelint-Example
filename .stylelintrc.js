@@ -10,7 +10,7 @@ module.exports = {
     "declaration-no-important": true,
     "scale-unlimited/declaration-strict-value": [
       [
-        "color",
+        "color",           // <--- Ensure 'color' is in this list
         "background-color",
         "border-color",
         "margin",
@@ -21,12 +21,20 @@ module.exports = {
       ],
       {
         "ignoreValues": ["inherit", "transparent", "currentColor", "initial", "unset"],
+        // This regex is crucial for allowing var() functions.
+        // It covers Salesforce Design System tokens, but a more generic regex for any var() function
+        // can also be used if you have a mix of token types.
+        "ignoreFunction": "/^var\\(--?[a-zA-Z0-9-]+\\)$/", // More generic var() matching
+        // A more flexible regex for `var()` that also handles the fallback:
+        // "ignoreFunction": "/^var\\([^,)]+(,[^)]+)?\\)$/",
         "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}."
       }
     ],
     "color-named": "never",
     "color-no-hex": true,
     "custom-property-pattern": null,
+    // This allows you to define custom properties with direct values without strict checking
+    "scale-unlimited/declaration-strict-value/ignoreCustomProperties": true
   }
 };
   /*{
