@@ -1,45 +1,39 @@
 module.exports = {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-recommended-scss"
-  ],
-  "plugins": [
-    "stylelint-declaration-strict-value"
-  ],
-  "rules": {
-    "declaration-no-important": true,
-    "scale-unlimited/declaration-strict-value": [
-      [
-        "color",           // <--- Ensure 'color' is in this list
-        "background-color",
-        "border-color",
-        "margin",
-        "padding",
-        "font-size",
-        "line-height",
-        "font-weight"
-      ],
-      {
-        "ignoreValues": ["inherit", "transparent", "currentColor", "initial", "unset"],
-        // This regex is crucial for allowing var() functions.
-        // It covers Salesforce Design System tokens, but a more generic regex for any var() function
-        // can also be used if you have a mix of token types.
-        "ignoreFunction": "/^var\\(--?[a-zA-Z0-9-]+\\)$/", // More generic var() matching
-        // A more flexible regex for `var()` that also handles the fallback:
-        // "ignoreFunction": "/^var\\([^,)]+(,[^)]+)?\\)$/",
+  
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended-scss"
+  ],
 
-        "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}."
-      }
-    ],
-    "color-named": "never",
-    "color-no-hex": true,
-    "custom-property-pattern": null,
+  "plugins": [
+    "stylelint-declaration-strict-value"
+  ],
 
-    // This allows you to define custom properties with direct values without strict checking
+  "rules": {
+    "declaration-no-important": true,
+    "scale-unlimited/declaration-strict-value": [
+      [
+        "color",
+        "background-color",
+        "border-color",
+        "margin",
+        "padding",
+        "font-size",
+        "line-height",
+        "font-weight"
+      ],
 
+      {
+        "ignoreValues": ["inherit", "transparent", "currentColor", "initial", "unset"],
+        "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}."
+      }
+    ],
 
-    "scale-unlimited/declaration-strict-value/ignoreCustomProperties": true
-  }
+    "color-named": "never",
+    "color-no-hex": true,
+    "custom-property-pattern": null
+  }
+
 };
   /*{
     extends: 'stylelint-config-standard-scss',
