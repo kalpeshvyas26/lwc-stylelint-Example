@@ -25,8 +25,7 @@ module.exports = {
 
       {
         "ignoreValues": ["inherit", "transparent", "currentColor", "initial", "unset"],
-        "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}.",
-        "ignoreCustomProperties": true
+        "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}."
       }
     ],
     "color-no-hex": null,
