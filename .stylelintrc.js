@@ -13,7 +13,7 @@ module.exports = {
     "declaration-no-important": true,
     "scale-unlimited/declaration-strict-value": [
       [
-        "color",
+       // "color",
         "background-color",
         "border-color",
         "margin",
@@ -28,6 +28,11 @@ module.exports = {
         "message": "Use design tokens or styling hooks instead of hardcoded values for ${property}."
       }
     ],
+    "declaration-property-value-allowed-list": {
+      // Color properties
+      "color": ["/^var\\(.+\\)$/", "inherit", "currentColor", "transparent"],
+
+    }
     "color-no-hex": null,
     "custom-property-pattern": null
   }
