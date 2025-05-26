@@ -32,7 +32,7 @@ module.exports = {
       // Color properties
       "color": ["/^var\\(.+\\)$/", "inherit", "currentColor", "transparent"],
 
-    }
+    },
     "color-no-hex": null,
     "custom-property-pattern": null
   }
